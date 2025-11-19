@@ -1,0 +1,18 @@
+# netlify.toml
+
+# --- START of REDIRECTS ---
+
+# 1. DOMAIN REDIRECT (Most Specific - Needs to be first)
+[[redirects]]
+  from = "https://snack-sutra-cloud-kitchen-website.netlify.app/*"
+  to = "https://snacksutra.techeireann.com/:splat"
+  status = 301
+  force = true
+
+# 2. SPA FALLBACK/REWRITE (Most General - Needs to be last)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# --- other configurations follow ---
