@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudKitchen - Menu</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/menu.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <h1 class="logo-name">business.name</h1>
+                    <p class="logo-tagline">business.tagline</p>
+                </a>
+            </div>
+
+            <button class="menu-toggle" aria-label="Toggle navigation">&#9776; </button>
+
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="#home">Menu</a>
+                <a href="index.html#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div id="home" class="spacer"></div>
+
+    <section class="customer-details-section">
+        <h3 class="section-heading">Delivery Details</h3>
+        <div class="customer-input-container">
+            <input type="text" id="customerName" placeholder="Your Full Name" aria-label="Customer Name Input">
+            <input type="text" id="customerAddress" placeholder="Your Delivery/Pickup Address" aria-label="Customer Address Input">
+            <button id="saveDetailsBtn" class="btn btn-secondary">Save Details</button>
+        </div>
+        <p id="detailsStatus" class="details-status"></p>
+    </section>
+
+    <section class="menu-section">
+        <div class="menu-header">
+            <h2 class="menu-title">Delicious <span class="highlight-text">Street Food Favorites</span></h2>
+            <p class="menu-subtitle">Freshly prepared every Saturday with authentic recipes and premium ingredients</p>
+        </div>
+
+        <div class="menu-grid">
+        </div>
+    </section>
+
+    <div id="cart-summary" class="cart-summary hidden">
+        <div class="cart-details" onclick="toggleExpandedCart()">
+            <span class="cart-icon">🛒</span>
+            <span id="item-count">0 Items</span>
+            <span class="separator">|</span>
+            <span id="total-price">€0</span>
+            <span class="cart-arrow">▲</span>
+        </div>
+        <button id="checkout-button" class="btn btn-primary" onclick="generateWhatsAppOrder()">Order via
+            WhatsApp</button>
+    </div>
+
+    <div id="expanded-cart" class="expanded-cart hidden">
+        <div class="expanded-cart-content">
+            <div class="expanded-cart-header">
+                <h3>Your Order Details</h3>
+                <button class="close-btn" onclick="toggleExpandedCart()">✕</button>
+            </div>
+
+            <div id="cart-item-list" class="cart-item-list">
+                <p class="empty-cart-message">Your cart is empty. Add some delicious food!</p>
+            </div>
+
+            <div class="expanded-cart-footer">
+                <div class="expanded-cart-totals">
+                    <button id="clear-cart-btn" class="btn btn-secondary" onclick="clearCart()">Clear Cart</button>
+                    <p>Total: <span id="expanded-total-price">€0</span></p>
+                </div>
+                <button class="btn btn-primary" onclick="generateWhatsAppOrder()">Proceed to WhatsApp Order</button>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact" class="footer">
+        <div class="footer-container">
+
+            <div class="footer-block about-us">
+                <h4 class="footer-title logo-name">business.name</h4>
+                <p>home.footerAbout</p>
+                <div class="social-links">
+                    <a href="social.facebook" class="social-icon">f</a>
+                    <a href="social.instagram" class="social-icon">i</a>
+                    <a href="social.twitter" class="social-icon">X</a>
+                </div>
+            </div>
+
+            <div class="footer-block contact-us">
+                <h4 class="footer-title">Contact Us</h4>
+                <div class="contact-item">
+                    <span class="contact-icon">📍</span>
+                    <p>business.addressLine1<br>business.addressLine2</p>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">📞</span>
+                    <p>business.contactNumber</p>
+                </div>
+                <div class="contact-item">
+                    <span class="contact-icon">✉️</span>
+                    <p>business.email</p>
+                </div>
+            </div>
+
+            <div class="footer-block operating-hours">
+                <h4 class="footer-title">Operating Hours</h4>
+                <div class="operating-item">
+                    <span class="operating-label">🕑 operations.days</span>
+                    <p>operations.hours</p>
+                </div>
+                <p class="order-info">operations.orderInfo</p>
+                <div class="pre-order-box">
+                    <p class="pre-order-text">operations.preOrderText</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="copyright">
+            <a href="https://www.techeireann.com/" target="_blank">
+                <img src="assets/te-icon-72x72.png" alt="Tech Éireann Icon" class="tech-icon">
+            </a>
+            <div>Powered by <a href="https://www.techeireann.com/" target="_blank">Tech Eireann</a></div>
+            <p>home.copyright</p>
+            <div class="spacer"></div>
+        </div>
+
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/menu.js"></script>
+
+</body>
+
+</html>

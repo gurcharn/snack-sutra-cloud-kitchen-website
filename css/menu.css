@@ -1,0 +1,896 @@
+/* --- Global Reset & Variables --- */
+:root {
+    --primary-color: #e9591e;
+    --secondary-color: #ffa500;
+    --text-color: #333;
+    --light-text-color: #555;
+    --background-color: #fff;
+    --light-background: #fdf6f2;
+    --review-background: #fff8f5;
+    --card-hover: #ffead8;
+    --font-family: 'Poppins', sans-serif;
+    --max-width: 1200px;
+    --padding-sides: 60px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    line-height: 1.6;
+}
+
+/* --- Utility Classes --- */
+.highlight-text {
+    color: var(--primary-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #d8480d;
+}
+
+.btn-secondary {
+    background-color: #fff;
+    color: var(--light-text-color);
+    border: 2px solid #ccc;
+    padding: 10px 20px;
+    /* Adjusted padding for footer button */
+}
+
+.btn-secondary:hover {
+    background-color: #f0f0f0;
+}
+
+
+/* --- Header (Reused) --- */
+/* --- Header Fix (Update this section in menu.css) --- */
+.header {
+    /* New Properties for Fixed Positioning */
+    position: fixed;
+    /* Keep header visible during scroll */
+    top: 0;
+    /* Pin it to the top edge */
+    left: 0;
+    /* Pin it to the left edge */
+    width: 100%;
+    /* Ensure it spans the full width of the viewport */
+    z-index: 1000;
+    /* Ensure it stays on top of other content */
+
+    /* Existing Layout Properties (Keep these) */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* Use a background color for visibility over scrolling content */
+    background-color: var(--background-color);
+    /* Usually white (#fff) */
+
+    /* Max-width logic needs to be handled inside the header or removed */
+    /* REMOVE: max-width: var(--max-width); */
+
+    /* Padding adjustments for the fixed bar */
+    padding: 15px var(--padding-sides);
+    border-bottom: 1px solid #eee;
+
+    /* Add a subtle shadow to lift it off the page */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+/* Add a container inside the header to maintain max-width centering */
+.header-container {
+    max-width: var(--max-width);
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.logo-tagline {
+    font-size: 14px;
+    color: var(--light-text-color);
+    margin-top: -5px;
+}
+
+/* --- CSS Fix for Logo Link --- */
+.logo-link {
+    text-decoration: none; /* Removes underline from the link */
+    color: inherit;      /* Ensures text color is inherited, usually fine, but good practice */
+}
+
+/* Optional: If you want the whole logo area to highlight on hover */
+.logo-link:hover .logo-name {
+    color: var(--primary-color); /* Matches your primary color hover style */
+}
+
+.nav a {
+    margin-left: 30px;
+    text-decoration: none;
+    color: var(--light-text-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav a:hover {
+    color: var(--primary-color);
+}
+
+/* Hamburge menu */
+/* --- Desktop & General Styles --- */
+.menu-toggle {
+    display: none;
+    /* Hidden on desktop */
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+.spacer {
+    height: 80px;
+    /* Adjust this value if your header height changes */
+    width: 100%;
+}
+
+/* --- Customer Details Section Styles --- */
+
+/* --- Styling for the new Heading --- */
+.customer-details-section .section-heading {
+    text-align: center; /* Center the heading text */
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-color); /* Use your primary text color */
+    margin-top: 35px; /* Spacing between heading and input fields */
+    margin-bottom: 15px; /* Spacing between heading and input fields */
+}
+
+/* Optional: Adjust container padding if needed, though 15px should be fine */
+.customer-details-section {
+    padding: 20px var(--padding-sides); /* Add a bit more vertical padding to the section */
+    /* ... rest of .customer-details-section styles ... */
+}
+
+.customer-details-section {
+    width: 100%;
+    max-width: var(--max-width); 
+    margin: 20px auto 0;
+    padding: 0 var(--padding-sides);
+}
+
+.customer-input-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows fields to stack on mobile */
+    gap: 10px;
+    background-color: #f7f7f7;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.customer-input-container input[type="text"] {
+    flex: 1 1 45%; /* Allows two fields per row on desktop */
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+#saveDetailsBtn {
+    font-size: 24px;
+    font-weight: 600;
+    padding: 10px 20px;
+    white-space: nowrap; 
+    width: 100%;
+    color: var(--background-color);
+    background-color: var(--primary-color);
+}
+
+.details-status {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    min-height: 20px; /* Reserves space to prevent layout jump */
+}
+
+/* Mobile Adjustments: Stack inputs vertically */
+@media (max-width: 600px) {
+    .customer-input-container input[type="text"] {
+        flex: 1 1 100%; /* Full width on mobile */
+    }
+    #saveDetailsBtn {
+        width: 100%;
+    }
+}
+
+/* Customer Details - END */
+
+
+/* ------------------------------------------------------------------ */
+/* --- MENU SECTION & ITEMS --- */
+/* ------------------------------------------------------------------ */
+
+.menu-section {
+    max-width: var(--max-width);
+    margin: 60px auto;
+    padding: 0 var(--padding-sides);
+}
+
+.menu-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.menu-title {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.menu-subtitle {
+    color: var(--light-text-color);
+    font-size: 16px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+}
+
+/* Collapsible Category Header */
+.category-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 25px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid var(--primary-color);
+    width: fit-content;
+}
+
+.category-heading {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+.toggle-icon {
+    font-size: 20px;
+    margin-left: 15px;
+    transition: transform 0.3s;
+}
+
+/* Rotate icon when section is expanded/contracted */
+.category-header .toggle-icon {
+    transform: rotate(180deg);
+    /* Default state (expanded) */
+}
+
+
+.category-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px 25px;
+    transition: all 0.3s ease-out;
+}
+
+.category-items.collapsed {
+    display: none;
+}
+
+.category-header .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.category-items.collapsed+.category-header .toggle-icon {
+    transform: rotate(0deg);
+}
+
+
+/* Menu Item Card */
+.menu-card {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+.menu-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    background-color: var(--review-background);
+}
+
+.item-image-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.item-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.item-price {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+.item-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.item-name {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    line-height: 1.2;
+}
+
+.item-description {
+    font-size: 14px;
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.quantity-controls {
+    display: flex;
+    justify-content: flex-start;
+    /* Only the quantity group now */
+    align-items: center;
+    margin-top: auto;
+}
+
+.quantity-input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.qty-btn {
+    background: #f7f7f7;
+    border: none;
+    color: var(--text-color);
+    padding: 8px 12px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.qty-btn:hover {
+    background: #e9e9e9;
+}
+
+.qty-display {
+    padding: 8px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    width: 40px;
+    text-align: center;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* --- MINIMIZED CART SUMMARY (Sticky Footer) --- */
+/* ------------------------------------------------------------------ */
+.cart-summary {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 15px var(--padding-sides);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.cart-summary.hidden {
+    display: none;
+}
+
+.cart-details {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.cart-icon {
+    font-size: 24px;
+    margin-right: 15px;
+}
+
+.separator {
+    margin: 0 15px;
+    opacity: 0.5;
+}
+
+#total-price {
+    font-size: 20px;
+}
+
+.cart-summary .btn-primary {
+    background-color: #fff;
+    color: var(--primary-color);
+    font-weight: 700;
+    padding: 10px 25px;
+}
+
+.cart-summary .btn-primary:hover {
+    background-color: #f0f0f0;
+}
+
+.cart-arrow {
+    font-size: 14px;
+    margin-left: 10px;
+    transition: transform 0.3s;
+}
+
+
+/* ------------------------------------------------------------------ */
+/* --- EXPANDED CART MODAL (New) --- */
+/* ------------------------------------------------------------------ */
+.expanded-cart {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.expanded-cart.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.expanded-cart-content {
+    background-color: #fff;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.expanded-cart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.expanded-cart-header h3 {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--light-text-color);
+    line-height: 1;
+}
+
+.cart-item-list {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.empty-cart-message {
+    text-align: center;
+    padding: 40px;
+    color: var(--light-text-color);
+    font-style: italic;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+    border-bottom: 1px dashed #ddd;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+    padding-right: 15px;
+}
+
+.cart-item-name {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.cart-item-price {
+    font-size: 14px;
+    color: var(--light-text-color);
+}
+
+.cart-item-controls {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-subtotal {
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+/* Reusing quantity input group for cart */
+.cart-item-controls .quantity-input-group {
+    margin-right: 15px;
+}
+
+
+.expanded-cart-footer {
+    padding: 20px;
+    border-top: 1px solid #eee;
+}
+
+.expanded-cart-totals {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.expanded-cart-totals span {
+    color: var(--primary-color);
+    font-size: 22px;
+}
+
+/* ------------------------------------------------------------------ */
+/* --- FOOTER (Reused) --- */
+/* ------------------------------------------------------------------ */
+.footer {
+    padding-top: 60px;
+    background-color: #f8f8f8;
+}
+
+.footer-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 var(--padding-sides) 40px;
+    display: grid;
+    grid-template-columns: 2fr 1.5fr 1.5fr;
+    gap: 40px;
+}
+
+.footer-block {
+    padding: 0;
+}
+
+.footer-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--text-color);
+}
+
+.footer-block p {
+    font-size: 15px;
+    color: var(--light-text-color);
+    margin-bottom: 10px;
+}
+
+.social-links {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+
+.contact-icon {
+    font-size: 18px;
+    margin-right: 10px;
+    line-height: 1.5;
+}
+
+
+.operating-item {
+    margin-bottom: 10px;
+}
+
+.operating-label {
+    font-weight: 600;
+    color: var(--primary-color);
+    display: block;
+}
+
+.pre-order-box {
+    background-color: var(--light-background);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+.pre-order-text {
+    font-size: 14px;
+    color: var(--text-color) !important;
+    line-height: 1.4;
+    font-weight: 400;
+}
+
+.pre-order-text strong {
+    font-weight: 700;
+}
+
+/* (All other footer styles omitted for brevity, assuming they are in the file) */
+/* ... existing footer styles ... */
+
+.copyright {
+    text-align: center;
+    padding: 20px var(--padding-sides);
+    border-top: 1px solid #eee;
+    font-size: 14px;
+    color: var(--light-text-color);
+}
+
+/* ------------------------------------------------------------------ */
+/* --- MOBILE RESPONSIVENESS (Adjusted) --- */
+/* ------------------------------------------------------------------ */
+@media (max-width: 992px) {
+    :root {
+        --padding-sides: 40px;
+    }
+
+    .nav a {
+        margin-left: 20px;
+        font-size: 14px;
+    }
+
+    .menu-title {
+        font-size: 32px;
+    }
+
+    .category-items {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --padding-sides: 20px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-bottom: 10px;
+    }
+
+    .nav {
+        margin-top: 10px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .nav a {
+        margin-left: 0;
+        font-size: 13px;
+    }
+
+    .header-container {
+        /* Ensure the logo and toggle button are separated */
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    /* 1. Show the Hamburger Button */
+    .menu-toggle {
+        display: block;
+        /* Show on mobile */
+    }
+
+    /* 2. Style the Navigation */
+    .nav {
+        /* Position the menu off-screen to the left/right */
+        position: absolute;
+        top: 65px;
+        /* Adjust based on your header's fixed height */
+        left: 0;
+        width: 100%;
+        height: auto;
+        /* Take only the height needed for content */
+        background-color: var(--background-color);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        padding: 10px 0;
+
+        /* Make it display vertically */
+        flex-direction: column;
+
+        /* Initial state: Hidden off-screen */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-out;
+    }
+
+    /* 3. Style the Navigation Links */
+    .nav a {
+        margin: 0;
+        /* Remove horizontal margin */
+        padding: 12px 20px;
+        border-bottom: 1px solid #eee;
+        text-align: left;
+        width: 100%;
+    }
+
+    /* 4. State when the menu is active/open */
+    .nav.open {
+        transform: translateX(0);
+        /* Slide into view */
+    }
+
+    .menu-title {
+        font-size: 28px;
+    }
+
+    .category-heading {
+        font-size: 24px;
+    }
+
+    .category-items {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        padding-bottom: 20px;
+    }
+
+    .footer-title {
+        margin-top: 20px;
+    }
+
+    /* Mobile Cart Summary */
+    .cart-summary {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .cart-summary .btn-primary {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    /* Mobile Expanded Cart */
+    .expanded-cart-content {
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 0;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .cart-item-name {
+        width: 100%;
+    }
+
+    .cart-item-controls {
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+}
